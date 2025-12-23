@@ -1,22 +1,32 @@
 class HashMap{
     constructor(capacity = 16, loadFactor = 0.75){
         this.capacity = capacity;
+        this.table = new Array(capacity)
         this.loadFactor = loadFactor
     }
 
-    hash(input){
+    hash(key){
         let hashCode = 0;
         const prime = 31;
 
-        for(let x=0; x < input.length; x++){
-            hashCode = (hashCode * prime + input.charCodeAt(x)%2)
+        for(let x=0; x < key.length; x++){
+            hashCode = (hashCode * prime + key.charCodeAt(x))% this.capacity
         }
 
-        return hashCode
+        return hashCode 
+    }
+
+
+    set(key, input){
+        const index = hash(key);
+
+        //prendre en compte les collisions
+        //Créer les LinkedList
+        this.table[index] = input
     }
 }
 
 
 const map = new HashMap()
 
-console.log(map.hash('Oreus'))
+console.log(map.hash(' '))
