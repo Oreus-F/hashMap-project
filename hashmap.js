@@ -1,4 +1,4 @@
-class HashMap{
+export class HashMap{
     constructor(capacity = 16, loadFactor = 0.75){
         this.capacity = capacity;
         this.table = new Array(capacity)
@@ -13,7 +13,7 @@ class HashMap{
             hashCode = (hashCode * prime + key.charCodeAt(x))% this.capacity
         }
 
-        return hashCode 
+        return hashCode
     }
 
 
