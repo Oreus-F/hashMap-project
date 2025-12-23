@@ -1,3 +1,6 @@
+import { LinkedList } from "./linkedList";
+
+
 export class HashMap{
     constructor(capacity = 16, loadFactor = 0.75){
         this.capacity = capacity;
@@ -20,8 +23,7 @@ export class HashMap{
     set(key, input){
         const index = hash(key);
 
-        //prendre en compte les collisions
-        //Créer les LinkedList
+        //create LinkedList ? 
         this.table[index] = input
     }
 }
