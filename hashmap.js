@@ -1,4 +1,4 @@
-import { LinkedList } from "./linkedList";
+import { LinkedList } from "./linkedList.js";
 
 
 export class HashMap{
@@ -30,5 +30,3 @@ export class HashMap{
 
 
 const map = new HashMap()
-
-console.log(map.hash(' '))

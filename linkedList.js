@@ -105,28 +105,3 @@ class Node{
         this.nextNode = next
     }
 }
-
-
-const list = new LinkedList;
-
-console.log(list.size())
-
-list.append("dog");
-list.append("cat");
-list.append("bird");
-list.append("train");
-
-
-
-console.log(list.printTest());
-
-console.log(list.size())
-
-console.log(list.headNode())
-
-list.prepend('monkey');
-
-console.log(list.size())
-
-console.log(list.printTest());
-console.log(list.tail())
