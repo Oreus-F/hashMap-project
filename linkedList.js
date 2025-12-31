@@ -76,8 +76,22 @@ export class LinkedList{
 
 
     at(index){
-        // return the node at the specific index
-        // throw error if no data or if no node at the specific index
+        let node = this.head;
+        let result;
+        let cursor = 0;
+
+        if(node === null){
+            return new Error('This list has no data')
+        }
+
+        while(cursor <= index){
+            if(cursor === index) result = node
+            node = node.nextNode
+            cursor++
+        }
+
+        return result
+
     }
 
 
