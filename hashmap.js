@@ -22,20 +22,36 @@ export class HashMap{
 
     set(key, input){
         const index = this.hash(key);
+        let list = this.table[index]
+        let append = true;
 
-        if(this.table[index] === undefined){
-            const list = new LinkedList()
+        if(list === undefined){
+            list = new LinkedList()
             list.append([key, input])
             this.table[index] = list
         } else {
-            const list = this.table[index];
+            let node = list.headNode();
+
+            while(node){
+                if(node.value[0] === key){
+                    node.value[1] = input
+                    append = false;
+                    break
+                }
+
+                node = node.nextNode
+            }
+
+        }
+
+        if(append){
             list.append([key, input])
         }
-        // this.table[index] = input
 
-        console.log(this.table[index])
     }
 }
+
+// need print test pour voir
 
 
 const map = new HashMap();
@@ -43,4 +59,4 @@ const map = new HashMap();
 map.set('Rama', 'woula');
 map.set('Sita', 'AWILIKIWI')
 
-console.log(map)
+map.set('Sita', 'oui')
