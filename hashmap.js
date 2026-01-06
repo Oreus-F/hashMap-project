@@ -1,4 +1,4 @@
-import { LinkedList } from "./linkedList.js";
+import { LinkedList } from "./Linked_List/script.js";
 
 
 export class HashMap{
