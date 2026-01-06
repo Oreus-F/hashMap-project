@@ -49,9 +49,28 @@ export class HashMap{
         }
 
     }
+
+
+    get(key){
+        const index = this.hash(key);
+        const list = this.table[index];
+
+        if(list === undefined){
+            return null
+        } else {
+            let node = list.headNode();
+
+            while(node){
+                if(node.value[0] === key){
+                    return node.value[1]
+                }
+
+                node = node.nextNode
+            }
+        }
+    }
 }
 
-// need print test pour voir
 
 
 const map = new HashMap();
