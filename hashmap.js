@@ -54,21 +54,21 @@ export class HashMap{
     get(key){
         const index = this.hash(key);
         const list = this.table[index];
+        let result = null
 
-        if(list === undefined){
-            return null
-        } else {
-            let node = list.headNode();
+        let node = list.headNode();
 
-            while(node){
-                if(node.value[0] === key){
-                    return node.value[1]
-                }
-
-                node = node.nextNode
+        while(node){
+            if(node.value[0] === key){
+                result = node.value[1]
             }
+
+            node = node.nextNode
         }
+
+        return result
     }
+    
 }
 
 
@@ -76,6 +76,7 @@ export class HashMap{
 const map = new HashMap();
 
 map.set('Rama', 'woula');
-map.set('Sita', 'AWILIKIWI')
 
-map.set('Sita', 'oui')
+console.log(map.get("oui"));
+console.log(map.get('Rama'));
+console.log(map.get('Sita'))
