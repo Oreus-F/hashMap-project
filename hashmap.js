@@ -87,6 +87,27 @@ export class HashMap{
 
         return result
     }
+
+
+    remove(key){
+        const index = this.hash(key);
+        const list = this.table[index];
+        let result = false;
+        let node = list.headNode();
+        let pointer = 0;
+
+        while(node){
+            if(node.value[0] === key){
+                result = true;
+                list.removeAt(pointer)
+            };
+
+            node = node.nextNode;
+            pointer++
+        }
+
+        return result
+    }
     
 }
 
@@ -96,6 +117,7 @@ const map = new HashMap();
 
 map.set('Rama', 'woula');
 
-console.log(map.has("oui"));
 console.log(map.has('Rama'));
-console.log(map.has('Sita'))
+console.log(map.remove('Rama'));
+console.log(map.has('Rama'));
+console.log(map.remove('Sita'));
