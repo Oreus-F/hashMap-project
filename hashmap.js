@@ -42,11 +42,11 @@ export class HashMap{
                 node = node.nextNode
             }
 
+            if(append){
+                list.append([key, input])
+            }
         }
 
-        if(append){
-            list.append([key, input])
-        }
 
     }
 
@@ -77,11 +77,12 @@ export class HashMap{
 
         let node = list.headNode();
 
+        console.log(node)
         while(node){
             if(node.value[0] === key){
                 result = true
             }
-
+            
             node = node.nextNode
         }
 
@@ -95,7 +96,8 @@ export class HashMap{
         let result = false;
         let node = list.headNode();
         let pointer = 0;
-
+        
+        
         while(node){
             if(node.value[0] === key){
                 result = true;
