@@ -74,7 +74,7 @@ export class HashMap{
         const index = this.hash(key);
         const list = this.table[index];
         let result = false;
-        
+
         if(!list){return result}
 
         let node = list.headNode();
@@ -135,7 +135,46 @@ export class HashMap{
         const newTable = new Array(16);
         this.table = newTable
     }
+
+
+    keys(){
+        const keys = [];
+        const array = this.table;
+
+        for(let x=0; x<array.length; x++){
+            if(array[x]){
+                let node = array[x].headNode();
+
+                while(node){
+                    keys.push(node.value[0]);
+                    node = node.nextNode
+                }
+            }
+        }
+
+        return keys
+        
+    }
     
+
+    values(){
+        const values = [];
+        const array = this.table;
+
+        for(let x=0; x<array.length; x++){
+            if(array[x]){
+                let node = array[x].headNode();
+
+                while(node){
+                    values.push(node.value[1]);
+                    node = node.nextNode
+                }
+            }
+        }
+
+        return values
+    
+    }
 }
 
 
@@ -147,10 +186,12 @@ map.set('Sita', 'oui');
 map.set('Oreus', 'oui');
 map.set('Loknar', 'Oklm');
 map.set('HalAkar', 'Oui');
+map.set('sita', 'non');
+map.set('Rama', 'ok')
 
-console.log(map.has('Loknar'))
-console.log(map.length());
+console.log(map.keys())
+console.log(map.values())
 
 map.clear();
-console.log(map.length());
-console.log(map.has('Loknar'))
+
+console.log(map.keys())
