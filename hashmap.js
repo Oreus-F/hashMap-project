@@ -110,6 +110,25 @@ export class HashMap{
 
         return result
     }
+
+
+    length(){
+        let counter = 0;
+        const array = this.table;
+
+        for(let x=0; x < array.length; x++){
+            if(array[x]){
+                let node = array[x].headNode();
+
+                while(node){
+                    counter++
+                    node = node.nextNode
+                }
+            }
+        }
+
+        return counter
+    }
     
 }
 
@@ -118,8 +137,3 @@ export class HashMap{
 const map = new HashMap();
 
 map.set('Rama', 'woula');
-
-console.log(map.has('Rama'));
-console.log(map.remove('Rama'));
-console.log(map.has('Rama'));
-console.log(map.remove('Sita'));
