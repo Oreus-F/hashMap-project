@@ -74,10 +74,11 @@ export class HashMap{
         const index = this.hash(key);
         const list = this.table[index];
         let result = false;
+        
+        if(!list){return result}
 
         let node = list.headNode();
 
-        console.log(node)
         while(node){
             if(node.value[0] === key){
                 result = true
@@ -129,6 +130,11 @@ export class HashMap{
 
         return counter
     }
+
+    clear(){
+        const newTable = new Array(16);
+        this.table = newTable
+    }
     
 }
 
@@ -137,3 +143,14 @@ export class HashMap{
 const map = new HashMap();
 
 map.set('Rama', 'woula');
+map.set('Sita', 'oui');
+map.set('Oreus', 'oui');
+map.set('Loknar', 'Oklm');
+map.set('HalAkar', 'Oui');
+
+console.log(map.has('Loknar'))
+console.log(map.length());
+
+map.clear();
+console.log(map.length());
+console.log(map.has('Loknar'))
