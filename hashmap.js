@@ -131,6 +131,13 @@ export class HashMap{
         return counter
     }
 
+
+    isLoaded(){
+        const entries = this.entries();
+        return entries > (this.capacity * this.loadFactor) ? true : false
+    }
+
+
     clear(){
         const newTable = new Array(16);
         this.table = newTable
