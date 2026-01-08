@@ -175,23 +175,25 @@ export class HashMap{
         return values
     
     }
+
+
+    entries(){
+        const entries = [];
+        const array = this.table;
+
+        for(let x=0; x<array.length; x++){
+            if(array[x]){
+                let node = array[x].headNode();
+
+                while(node){
+                    entries.push(node.value);
+                    node = node.nextNode
+                }
+            }
+        }
+
+        return entries
+    
+    }
+    
 }
-
-
-
-const map = new HashMap();
-
-map.set('Rama', 'woula');
-map.set('Sita', 'oui');
-map.set('Oreus', 'oui');
-map.set('Loknar', 'Oklm');
-map.set('HalAkar', 'Oui');
-map.set('sita', 'non');
-map.set('Rama', 'ok')
-
-console.log(map.keys())
-console.log(map.values())
-
-map.clear();
-
-console.log(map.keys())
