@@ -29,6 +29,8 @@ retest.set('cat');
 retest.set('bird');
 retest.set('crocodile');
 retest.set('platypus');
+retest.set('dog');
+retest.set('dog');
 
 console.log(retest.length());
 console.log(retest.get('dog'));
@@ -37,4 +39,5 @@ console.log(retest.remove('crocodile'));
 console.log(retest.length());
 console.log(retest.keys());
 console.log(retest.clear());
-console.log(retest.length())
+
+console.log(retest.length());
