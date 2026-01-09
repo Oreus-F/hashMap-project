@@ -21,6 +21,11 @@ export class HashMap{
 
 
     set(key, input){
+        if(this.isLoaded()){
+            console.log('now')
+            this.growArray()
+        }
+
         const index = this.hash(key);
         let list = this.table[index]
         let append = true;
@@ -134,7 +139,7 @@ export class HashMap{
 
     isLoaded(){
         const length = this.length();
-        return length > (this.capacity * this.loadFactor) ? true : false
+        return length >= (this.capacity * this.loadFactor) ? true : false
     }
 
 
@@ -201,6 +206,24 @@ export class HashMap{
 
         return entries
     
+    }
+
+
+    growArray(){
+        this.capacity = this.capacity * 2;
+        const previousTable = this.table;
+        this.table = new Array(this.capacity);
+
+        for(let x=0; x<previousTable.length;x++){
+            if(previousTable[x]){
+                let node = previousTable[x].headNode();
+
+                while(node){
+                    this.set(node.value[0], node.value[1]);
+                    node = node.nextNode;
+                }
+            }
+        }
     }
     
 }
