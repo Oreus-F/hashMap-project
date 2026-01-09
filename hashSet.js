@@ -33,6 +33,12 @@ export class HashSet{
             list.append(key)
             this.table[index] = list
         } else {
+            let node = list.headNode();
+            
+            while(node){
+                if(node.value === key) return
+            }
+            
             list.append(key)
             
         }
