@@ -2,8 +2,8 @@ import { HashMap } from "./hashmap.js";
 
 const test = new HashMap();
 
-test.set('apple', 'red')
-test.set('banana', 'yellow')
+test.set('apple', 'red');
+test.set('banana', 'yellow');
 test.set('carrot', 'orange')
 test.set('dog', 'brown')
 test.set('elephant', 'gray')
@@ -15,10 +15,8 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 
-console.log(test.entries())
-console.log(test.length());
-
 test.set('dog', 'black');
 
-console.log(test.entries())
-console.log(test.length());
+test.set('moon', 'silver');
+console.log(test.entries());
+console.log(test.length())
