@@ -65,6 +65,7 @@ export class HashMap{
         while(node){
             if(node.value[0] === key){
                 result = node.value[1]
+                return result;
             }
 
             node = node.nextNode
@@ -86,6 +87,7 @@ export class HashMap{
         while(node){
             if(node.value[0] === key){
                 result = true
+                return result;
             }
             
             node = node.nextNode
@@ -106,7 +108,8 @@ export class HashMap{
         while(node){
             if(node.value[0] === key){
                 result = true;
-                list.removeAt(pointer)
+                list.removeAt(pointer);
+                return result
             };
 
             node = node.nextNode;
@@ -143,7 +146,8 @@ export class HashMap{
 
 
     clear(){
-        const newTable = new Array(16);
+        this.capacity = 16;
+        const newTable = new Array(this.capacity);
         this.table = newTable
     }
 
