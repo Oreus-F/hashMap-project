@@ -133,8 +133,8 @@ export class HashMap{
 
 
     isLoaded(){
-        const entries = this.entries();
-        return entries > (this.capacity * this.loadFactor) ? true : false
+        const length = this.length();
+        return length > (this.capacity * this.loadFactor) ? true : false
     }
 
 
