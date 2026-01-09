@@ -22,7 +22,6 @@ export class HashMap{
 
     set(key, input){
         if(this.isLoaded()){
-            console.log('now')
             this.growArray()
         }
 
