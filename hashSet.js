@@ -20,35 +20,21 @@ export class HashSet{
     }
 
 
-    set(key, input){
+    set(key){
         if(this.isLoaded()){
             this.growArray()
         }
 
         const index = this.hash(key);
         let list = this.table[index]
-        let append = true;
 
         if(list === undefined){
             list = new LinkedList()
-            list.append([key, input])
+            list.append(key)
             this.table[index] = list
         } else {
-            let node = list.headNode();
-
-            while(node){
-                if(node.value[0] === key){
-                    node.value[1] = input
-                    append = false;
-                    break
-                }
-
-                node = node.nextNode
-            }
-
-            if(append){
-                list.append([key, input])
-            }
+            list.append(key)
+            
         }
 
 
@@ -63,8 +49,9 @@ export class HashSet{
         let node = list.headNode();
 
         while(node){
-            if(node.value[0] === key){
-                result = node.value[1]
+            if(node.value === key){
+                result = node.value
+                return result
             }
 
             node = node.nextNode
@@ -84,8 +71,9 @@ export class HashSet{
         let node = list.headNode();
 
         while(node){
-            if(node.value[0] === key){
-                result = true
+            if(node.value === key){
+                result = true;
+                return result
             }
             
             node = node.nextNode
@@ -104,9 +92,10 @@ export class HashSet{
         
         
         while(node){
-            if(node.value[0] === key){
+            if(node.value === key){
                 result = true;
-                list.removeAt(pointer)
+                list.removeAt(pointer);
+                return result
             };
 
             node = node.nextNode;
@@ -143,7 +132,8 @@ export class HashSet{
 
 
     clear(){
-        const newTable = new Array(16);
+        this.capacity = 16;
+        const newTable = new Array(this.capacity);
         this.table = newTable
     }
 
@@ -157,7 +147,7 @@ export class HashSet{
                 let node = array[x].headNode();
 
                 while(node){
-                    keys.push(node.value[0]);
+                    keys.push(node.value);
                     node = node.nextNode
                 }
             }
@@ -167,45 +157,6 @@ export class HashSet{
         
     }
     
-
-    values(){
-        const values = [];
-        const array = this.table;
-
-        for(let x=0; x<array.length; x++){
-            if(array[x]){
-                let node = array[x].headNode();
-
-                while(node){
-                    values.push(node.value[1]);
-                    node = node.nextNode
-                }
-            }
-        }
-
-        return values
-    
-    }
-
-
-    entries(){
-        const entries = [];
-        const array = this.table;
-
-        for(let x=0; x<array.length; x++){
-            if(array[x]){
-                let node = array[x].headNode();
-
-                while(node){
-                    entries.push(node.value);
-                    node = node.nextNode
-                }
-            }
-        }
-
-        return entries
-    
-    }
 
 
     growArray(){
@@ -218,7 +169,7 @@ export class HashSet{
                 let node = previousTable[x].headNode();
 
                 while(node){
-                    this.set(node.value[0], node.value[1]);
+                    this.set(node.value);
                     node = node.nextNode;
                 }
             }
